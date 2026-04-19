@@ -79,6 +79,15 @@ def decode(png_file: str, output: str) -> None:
     click.echo(f"Decoded: {out}")
 
 
+@main.command("security-stats")
+def security_stats_cmd() -> None:
+    """Show counts of quarantined files by threat category."""
+    from documark.security import security_stats
+    import json
+    stats = security_stats()
+    click.echo(json.dumps(stats, indent=2))
+
+
 @main.command("serve-mcp")
 def serve_mcp() -> None:
     """Start the DocUmark MCP server for AI platform integration."""
