@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "documark"
+version = "0.1.0"
+description = "Security-first document converter to optimized Markdown for AI/ML pipelines"
+readme = "README.md"
+license = { file = "LICENSE.md" }
+requires-python = ">=3.13"
+dependencies = [
+    "pypdf>=4.0",
+    "python-docx>=1.1",
+    "markdown-it-py>=3.0",
+    "Pillow>=10.0",
+    "click>=8.1",
+    "requests>=2.31",
+    "mcp>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "pip-audit>=2.7",
+]
+
+[project.scripts]
+documark = "documark.cli:main"
+
+[tool.ruff]
+line-length = 88
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
